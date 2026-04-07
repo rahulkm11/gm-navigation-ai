@@ -208,12 +208,11 @@ function switchTab(tab) {
   activityPanel.classList.remove('mobile-open');
 
   const messagesArea = document.getElementById('messages');
-  const typingArea   = document.getElementById('typing');
   const inputArea    = document.querySelector('.chat-input-area');
   const chatHeader   = document.querySelector('.chat-header');
 
-  // Reset visibility
-  [messagesArea, typingArea, inputArea, chatHeader].forEach(el => { if (el) el.style.display = ''; });
+  // Reset visibility (never touch typing indicator — it has its own display:none state)
+  [messagesArea, inputArea, chatHeader].forEach(el => { if (el) el.style.display = ''; });
 
   if (tab === 'chat') {
     // Small map strip + chat
@@ -223,7 +222,7 @@ function switchTab(tab) {
     // Fullscreen map — hide chat UI
     chatMain.style.display = 'flex';
     mapStrip.classList.add('map-full');
-    [messagesArea, typingArea, inputArea, chatHeader].forEach(el => { if (el) el.style.display = 'none'; });
+    [messagesArea, inputArea, chatHeader].forEach(el => { if (el) el.style.display = 'none'; });
     if (navMap) setTimeout(() => navMap.invalidateSize(), 200);
   } else if (tab === 'info') {
     chatMain.style.display = 'flex';
