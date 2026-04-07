@@ -207,13 +207,23 @@ function switchTab(tab) {
   mapStrip.classList.remove('tab-hidden', 'map-full');
   activityPanel.classList.remove('mobile-open');
 
+  const messagesArea = document.getElementById('messages');
+  const typingArea   = document.getElementById('typing');
+  const inputArea    = document.querySelector('.chat-input-area');
+  const chatHeader   = document.querySelector('.chat-header');
+
+  // Reset visibility
+  [messagesArea, typingArea, inputArea, chatHeader].forEach(el => { if (el) el.style.display = ''; });
+
   if (tab === 'chat') {
+    // Small map strip + chat
     chatMain.style.display = 'flex';
-    // map strip visible in chat tab (navigation app — always show map)
     if (navMap) setTimeout(() => navMap.invalidateSize(), 200);
   } else if (tab === 'map') {
+    // Fullscreen map — hide chat UI
     chatMain.style.display = 'flex';
     mapStrip.classList.add('map-full');
+    [messagesArea, typingArea, inputArea, chatHeader].forEach(el => { if (el) el.style.display = 'none'; });
     if (navMap) setTimeout(() => navMap.invalidateSize(), 200);
   } else if (tab === 'info') {
     chatMain.style.display = 'flex';
