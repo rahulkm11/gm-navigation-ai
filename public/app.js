@@ -238,9 +238,6 @@ async function sendMessage() {
   const text = inputEl.value.trim();
   if (!text) return;
 
-  // Remove welcome screen
-  const welcome = messagesEl.querySelector('.welcome-msg');
-  if (welcome) welcome.remove();
 
   inputEl.value = '';
   inputEl.style.height = 'auto';
@@ -531,14 +528,12 @@ function resetChat() {
   }
 
   messagesEl.innerHTML = `
-    <div class="welcome-msg">
-      <div class="welcome-icon">
-        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4da6ff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="3 11 22 2 13 21 11 13 3 11"/>
-        </svg>
+    <div class="message assistant">
+      <div class="msg-avatar">⬡</div>
+      <div class="msg-content">
+        <div class="msg-bubble">Good morning, Jordan. Your Blazer EV is charged to 73% — 212 miles of range. Where are we headed today?</div>
+        <div class="msg-time">Now</div>
       </div>
-      <div class="welcome-title">Ready to navigate, Jordan.</div>
-      <div class="welcome-sub">Your Blazer EV is at 73% — 212 miles range. Ask me anything, or try a scenario on the left.</div>
     </div>`;
 
   activityFeed.innerHTML = '<div class="activity-empty">Steps will appear here when you send a message</div>';
