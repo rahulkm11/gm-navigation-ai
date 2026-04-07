@@ -853,7 +853,7 @@ body {
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.55);
-  z-index: 40;
+  z-index: 1500;
 }
 .sidebar-overlay.active { display: block; }
 
@@ -914,7 +914,7 @@ body {
     height: calc(100vh - 54px);
     height: calc(100dvh - 54px);
     width: 280px;
-    z-index: 50;
+    z-index: 1600;
     transition: left 0.28s ease;
     overflow-y: auto;
     box-shadow: 4px 0 20px rgba(0,0,0,0.5);
