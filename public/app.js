@@ -209,10 +209,10 @@ function switchTab(tab) {
 
   if (tab === 'chat') {
     chatMain.style.display = 'flex';
-    mapStrip.classList.add('tab-hidden');
+    // map strip visible in chat tab (navigation app — always show map)
+    if (navMap) setTimeout(() => navMap.invalidateSize(), 200);
   } else if (tab === 'map') {
     chatMain.style.display = 'flex';
-    mapStrip.classList.remove('tab-hidden');
     mapStrip.classList.add('map-full');
     if (navMap) setTimeout(() => navMap.invalidateSize(), 200);
   } else if (tab === 'info') {
